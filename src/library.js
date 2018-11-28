@@ -1,12 +1,17 @@
 const world = {
-  lifeExistence :[ [0,1,2], [0,1,2], [0,1,2] ],
-  isLatitudeLongitudeValid : function(latitude, longitude) {
-    if( Math.min(latitude,longitude) < 0 || Math.max(latitude,longitude) >= this.lifeExistence.length)
-      return false;
-    return true;
-  }
-};
+  grid :[['A','D','D'], ['A','D','D'],['A','D','D']],
 
-module.exports = {
-  world
+  getWorldSize : function(grid){
+    return grid.length;
+  },
+  
+  isNeighbourValid : function(position) {
+    let { latitude, longitude } = position;
+    return !( Math.min(latitude,longitude) < 0 || Math.max(latitude,longitude) >= this.getWorldSize(this.grid));
+  }
 }
+
+
+module.exports = { 
+  world 
+};
