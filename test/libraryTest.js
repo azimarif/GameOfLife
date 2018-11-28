@@ -37,3 +37,12 @@ describe("test for getAllNeighbours ()",function() {
       [ [0,0], [0,1], [0,2], [1,0], [1,2], [2,0], [2,1], [2,2] ]);
   });
 });
+
+describe("test for getAliveNeighboursCount ()",function() {
+  it("should return number of alive neighbours ",function() {
+    equal(world.getAliveNeighboursCount({latitude :0, longitude : 0}),1);
+    equal(world.getAliveNeighboursCount({latitude :1, longitude : 0}),2);
+    equal(world.getAliveNeighboursCount({latitude :0, longitude : 1}),4);
+    equal(world.getAliveNeighboursCount({latitude :1, longitude : 1}),6);
+  });
+});

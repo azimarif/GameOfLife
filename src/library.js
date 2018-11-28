@@ -12,7 +12,7 @@ const world = {
 
   isNeighbourAlive : function(position) {
     let { latitude, longitude } = position;
-    return (this.isNeighbourValid(latitude,longitude)) &&  (this.grid[latitude][longitude] == 'A');
+    return (this.isNeighbourValid(position)) &&  (this.grid[latitude][longitude] == 'A');
   },
 
   getAllNeighbours : function(position){
@@ -28,6 +28,15 @@ const world = {
 
     return neighbour.filter((x)=>{ return !(x[0] ==latitude && x[1] == longitude)});
   },
+
+  getAliveNeighbours : function(position) {
+    let { latitude, longitude } = position;
+    return this.getAllNeighbours(position).map((x)=> this.isNeighbourAlive({ latitude:x[0], longitude:x[1]})).map((x)=> 0+x);
+  },
+
+  getAliveNeighboursCount : function(position) {
+    return this.getAliveNeighbours(position).reduce((x,y)=> x+y);
+  }
 }
 
 module.exports = { 
