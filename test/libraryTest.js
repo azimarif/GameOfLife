@@ -30,3 +30,10 @@ describe("test for isNeighbourAlive ()",function() {
     equal(world.isNeighbourAlive({latitude :1, longitude : 1}),false);
   });
 });
+
+describe("test for getAllNeighbours ()",function() {
+  it("should return all possible neighbour",function() {
+    deepEqual(world.getAllNeighbours({latitude :1, longitude : 1}),
+      [ [0,0], [0,1], [0,2], [1,0], [1,2], [2,0], [2,1], [2,2] ]);
+  });
+});
